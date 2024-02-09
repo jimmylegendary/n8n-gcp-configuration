@@ -1,0 +1,13 @@
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: regionalpd-storageclass
+provisioner: kubernetes.io/gce-pd
+parameters:
+  type: pd-standard
+  replication-type: regional-pd
+allowedTopologies:
+  - matchLabelExpressions:
+      - key: topology.kubernetes.io/zone
+        values:
+          - asia-northeast3-a
